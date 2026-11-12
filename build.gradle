@@ -1,20 +1,40 @@
 plugins {
-    id 'java'
+    id 'application'
 }
-
-group = 'org.idk'
-version = '1.0-SNAPSHOT'
-
 repositories {
     mavenCentral()
 }
 
-dependencies {
-    testImplementation platform('org.junit:junit-bom:5.10.0')
-    testImplementation 'org.junit.jupiter:junit-jupiter'
-    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+ext{
+    lwjglProperties = [
+            version: "3.3.4",
+            natives: "natives-" + (System.getProperty("os.name").toLowerCase().contains("win") ? "windows" :
+                    System.getProperty("os.name").toLowerCase().contains("mac") ? "macos" : "linux")
+    ]
 }
 
-test {
-    useJUnitPlatform()
+dependencies {
+    implementation platform("org.lwjgl:lwjgl-bom:3.3.4")
+//opengl
+    implementation "org.lwjgl:lwjgl"
+    implementation "org.lwjgl:lwjgl-glfw"
+    implementation "org.lwjgl:lwjgl-opengl"
+
+    implementation "org.lwjgl:lwjgl-stb:${lwjglProperties.version}"
+    runtimeOnly "org.lwjgl:lwjgl-stb:${lwjglProperties.version}:${lwjglProperties.natives}"
+//gson
+    implementation 'com.google.code.gson:gson:2.15.0'
+
+
+    runtimeOnly "org.lwjgl:lwjgl::natives-windows"
+    runtimeOnly "org.lwjgl:lwjgl-glfw::natives-windows"
+    runtimeOnly "org.lwjgl:lwjgl-opengl::natives-windows"
+}
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+application {
+    mainClass = 'psn'
 }
