@@ -26,13 +26,13 @@ public static void main(String[] args) {
 		});
 		terminalThread.start();
 		///run the logging window
-		Thread loggingThread = new Thread(() -> {
+/*		Thread loggingThread = new Thread(() -> {
 			try {
 				LoggingWindow.log_build();
 				System.out.println("< Program > : open Logging Window");
 			} catch (Exception e) { e.printStackTrace(); }
 		});
-		loggingThread.start();
+		loggingThread.start(); */
 		///run the render window
 /*		Thread RendererThread = new Thread(() -> {
 			try {
