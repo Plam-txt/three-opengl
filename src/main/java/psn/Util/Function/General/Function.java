@@ -1,10 +1,8 @@
 package psn.Util.Function.General;
 
-import psn.Util.Keyword.Test;
-
 import java.lang.reflect.Array;
 
-@Test
+
 public class Function {
 	public static <T> void print_all_arrays(T[] array) {
 		int len = array.length; System.out.print("{");
@@ -27,8 +25,7 @@ public class Function {
 			} else {throw  new IllegalArgumentException(
 						"Illegal type of array,must be String[], Character[](char), " +
 								"Number[](int), Double[](double), " +
-								"Boolean[](boolean) or Float[](float)"
-				);}
+								"Boolean[](boolean) or Float[](float)" );}
 		} System.out.println("}");
 	}
 

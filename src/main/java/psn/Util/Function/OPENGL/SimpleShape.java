@@ -1,8 +1,9 @@
 package psn.Util.Function.OPENGL;
 
 import org.lwjgl.opengl.GL11;
+import psn.Util.Keyword.Test;
 
-@SuppressWarnings("unused")
+@Test
 public class SimpleShape {
 	public static void RECTANGLE(float x, float y, float width, float height) {
 		GL11.glBegin(GL11.GL_QUADS);
